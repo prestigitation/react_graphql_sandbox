@@ -1,0 +1,20 @@
+version: "3.4"
+services:
+ vite_docker:
+   image: node:alpine
+   container_name: react_graphql_test
+   entrypoint: /bin/sh
+   ports:
+     - 8001:8001
+   working_dir: /srv/app
+   volumes:
+     - type: bind
+       source: ./
+       target: /srv/app
+   networks:
+     - laravel_react_graphql_network
+   tty: true
+
+networks:
+  laravel_react_graphql_network:
+    external: true
